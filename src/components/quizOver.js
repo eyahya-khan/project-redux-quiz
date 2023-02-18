@@ -1,12 +1,12 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { quiz } from 'reducers/quiz';
-import correctSticker from '../components/assets/checkmark.png';
-import inCorrectSticker from '../components/assets/cross.png';
+import correctSticker from './assets/checkmark.png';
+import inCorrectSticker from './assets/cross.png';
 import Button from './Button';
-import {Footer} from './Footer';
+import { Footer } from './Footer';
 
-const quizOver = () => {
+const QuizOver = () => {
   const dispatch = useDispatch();
   const selectedAnswer = useSelector((state) => state.quiz.answers);
   const correctAnwser = selectedAnswer.filter((answer) => answer.isCorrect);
@@ -22,10 +22,10 @@ const quizOver = () => {
         <section className="question-section quiz-section">
           <h2 className="summary-text">
             {correctAnwser.length <= 3
-              ? "Oh sorry, look at more butts and try again"
-              : correctAnwser.length === 4 || correctAnwser.length === 5
-              ? "Nice try! You did good. But if you see a butt, check it out"
-              : "Congratulations! You really know your butts"}
+              ? 'Oh sorry, look at more butts and try again'
+              : (correctAnwser.length === 4 || correctAnwser.length === 5
+                ? 'Nice try! You did good. But if you see a butt, check it out'
+                : 'Congratulations! You really know your butts')}
           </h2>
           <div className="summary-container">
             {selectedAnswer.map((item) => (
@@ -33,13 +33,11 @@ const quizOver = () => {
                 <img
                   className="sticker"
                   src={item.question.sticker}
-                  alt={item.img_alt}
-                />
+                  alt={item.img_alt} />
                 <img
                   className="check-mark"
                   src={item.isCorrect ? correctSticker : inCorrectSticker}
-                  alt=""
-                />
+                  alt="" />
               </div>
             ))}
           </div>
@@ -52,4 +50,4 @@ const quizOver = () => {
   );
 };
 
-export default quizOver;
+export default QuizOver;

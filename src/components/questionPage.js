@@ -27,16 +27,14 @@ const Counter = styled.span`
   }
 `;
 
-const questionPage = () => {
+const QuestionPage = () => {
   const dispatch = useDispatch();
 
   const question = useSelector(
     (state) => state.quiz.questions[state.quiz.currentQuestionIndex]
   );
-
-  const answer = useSelector((state) =>
-    state.quiz.answers.find((a) => a.questionId === question.id)
-  );
+  //   eslint-disable-next-line max-len
+  const answer = useSelector((state) => state.quiz.answers.find((a) => a.questionId === question.id));
 
   const answerArray = useSelector((state) => state.quiz.answers);
 
@@ -46,16 +44,14 @@ const questionPage = () => {
 
   const score = useSelector((state) => state.quiz.score);
 
+  const displayNextQuestion = () => {
+    dispatch(quiz.actions.goToNextQuestion());
+  };
   const onAnswerSubmit = (id, index) => {
     dispatch(quiz.actions.submitAnswer({ questionId: id, answerIndex: index }));
     setTimeout(displayNextQuestion, 2000);
   };
 
-  const displayNextQuestion = () => {
-    dispatch(quiz.actions.goToNextQuestion());
-  };
-
-  //Check the answer state - correct or incorrect
   const changeColorBtn = (indexOption) => {
     if (!answer) {
       return '#000';
@@ -69,24 +65,21 @@ const questionPage = () => {
 
   const scoreAnimation = () => {
     if (answerArray.length === currentQuestionIndex) {
-      return "";
-    } else {
-      if (answerArray[currentQuestionIndex].isCorrect) {
-        return keyframes`
-     
-                   25% {
+      return '';
+    }
+    if (answerArray[currentQuestionIndex].isCorrect) {
+      return keyframes`
+                           25% {
                        font-size: 40px;
                        background:#01785D ;
                       }
-                      
-                      
                       50% {
                        background: black;
                        font-size: 20px;
                    }
                 `;
-      } else {
-        return keyframes`
+    } else {
+      return keyframes`
                 25% {
                   font-size: 40px;
                   background:#E76158 ;
@@ -95,9 +88,8 @@ const questionPage = () => {
                   background: black;
                   font-size: 20px;
                 `;
-      }
     }
-  };
+  }
 
   const correctAnswerAnimation = (correctIndex) => {
     if (!answer) {
@@ -137,9 +129,9 @@ const questionPage = () => {
 
   const cursorStyle = () => {
     if (!answer) {
-      return "pointer";
+      return 'pointer';
     }
-    return "not-allowed";
+    return 'not-allowed';
   };
 
   return (
@@ -151,8 +143,7 @@ const questionPage = () => {
         <div className="chart">
           <div
             className="bar"
-            style={{ width: `${(question.id / 6) * 100}%` }}
-          ></div>
+            style={{ width: `${(question.id / 6) * 100}%` }} />
         </div>
         <div className="num">{question.id}/6</div>
       </div>
@@ -163,8 +154,7 @@ const questionPage = () => {
           <img
             className="question-img"
             src={question.img}
-            alt={question.img_alt}
-          />
+            alt={question.img_alt} />
           <div className="answer-btn-container">
             {question.options.map((item, index) => (
               <Button
@@ -174,8 +164,7 @@ const questionPage = () => {
                 key={item}
                 border={changeColorBtn(index)}
                 animation={correctAnswerAnimation(index)}
-                cursor={cursorStyle}
-              >
+                cursor={cursorStyle}>
                 {item}
               </Button>
             ))}
@@ -183,7 +172,7 @@ const questionPage = () => {
           <Counter animation={scoreAnimation()}>
             <span role="img" aria-label="star emoji">
               ⭐️
-            </span>{" "}
+            </span>{' '}
             {score}
           </Counter>
         </section>
@@ -193,4 +182,4 @@ const questionPage = () => {
   );
 };
 
-export default questionPage;
+export default QuestionPage;
