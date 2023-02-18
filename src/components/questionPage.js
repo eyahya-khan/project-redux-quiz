@@ -33,7 +33,6 @@ const QuestionPage = () => {
   const question = useSelector(
     (state) => state.quiz.questions[state.quiz.currentQuestionIndex]
   );
-  //   eslint-disable-next-line max-len
   const answer = useSelector((state) => state.quiz.answers.find((a) => a.questionId === question.id));
 
   const answerArray = useSelector((state) => state.quiz.answers);
@@ -137,8 +136,6 @@ const QuestionPage = () => {
   return (
     <>
       <h1>Guess Whose Butt</h1>
-      {/* ADD PROGRESS BAR */}
-      {/* <p>Question {question.id} /6</p> */}
       <div className="progress-wrapper">
         <div className="chart">
           <div
@@ -147,8 +144,6 @@ const QuestionPage = () => {
         </div>
         <div className="num">{question.id}/6</div>
       </div>
-      {/* Or use {currentQuestionIndex + 1} */}
-      {/* *************** */}
       <div className="container">
         <section className="question-section">
           <img
