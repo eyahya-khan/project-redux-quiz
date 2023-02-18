@@ -1,30 +1,30 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 const questions = [
   {
     id: 1,
-    questionText: "Who set the Olympic record for the 100m dash in 2012?",
-    options: ["Usain Bolt", "Justin Gatlin", "Tyson Gay", "Asafa Powell"],
-    correctAnswerIndex: 0,
+    questionText: 'Who set the Olympic record for the 100m dash in 2012?',
+    options: ['Usain Bolt', 'Justin Gatlin', 'Tyson Gay', 'Asafa Powell'],
+    correctAnswerIndex: 0
   },
   {
     id: 2,
     questionText:
-      "When was Michael Phelps last named male World Swimmer of the Year?",
-    options: ["2012", "2014", "2016", "2018"],
-    correctAnswerIndex: 2,
-  },
+      'When was Michael Phelps last named male World Swimmer of the Year?',
+    options: ['2012', '2014', '2016', '2018'],
+    correctAnswerIndex: 2
+  }
 ];
 
 const initialState = {
   questions,
   answers: [],
   currentQuestionIndex: 0,
-  quizOver: false,
+  quizOver: false
 };
 
 export const quiz = createSlice({
-  name: "quiz",
+  name: 'quiz',
   initialState,
   reducers: {
     /**
@@ -48,7 +48,7 @@ export const quiz = createSlice({
 
       if (!question) {
         throw new Error(
-          "Could not find question! Check to make sure you are passing the question id correctly."
+          'Could not find question! Check to make sure you are passing the question id correctly.'
         );
       }
 
@@ -63,7 +63,7 @@ export const quiz = createSlice({
         answerIndex,
         question,
         answer: question.options[answerIndex],
-        isCorrect: question.correctAnswerIndex === answerIndex,
+        isCorrect: question.correctAnswerIndex === answerIndex
       });
     },
 
@@ -91,6 +91,6 @@ export const quiz = createSlice({
      */
     restart: () => {
       return initialState;
-    },
-  },
+    }
+  }
 });
