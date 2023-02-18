@@ -1,0 +1,126 @@
+.progress-bar {
+  width: 50%;
+  margin: 1em;
+}
+
+:root {
+  --background: radial-gradient(#ffe600, #ee5e0b);
+  --char: rgba(218, 87, 11, 0.2);
+  --bar: linear-gradient(
+    90deg,
+    #000 5.555%,
+    #000 6.666%,
+    #a2b983 7.777%,
+    #a2b983 10%,
+    #000 11.111%,
+    #000 14.444%,
+    #a2b983 15.555%,
+    #a2b983 18.888%,
+    #000 19.999%,
+    #000 22.222%,
+    #a2b983 23.333%,
+    #a2b983 26.666%,
+    #000 27.777%,
+    #000 31.111%,
+    #a2b983 32.222%,
+    #a2b983 35.555%,
+    #000 36.666%,
+    #000 39.999%,
+    #a2b983 40%,
+    #a2b983 44.444%,
+    #000 45.555%,
+    #000 50%,
+    #a2b983 51.111%,
+    #a2b983 55.555%,
+    #000 56.666%,
+    #000 59.999%,
+    #a2b983 60%,
+    #a2b983 64.444%,
+    #000 65.555%,
+    #000 68.888%,
+    #a2b983 69.999%,
+    #a2b983 72.222%,
+    #000 73.333%,
+    #000 76.666%,
+    #a2b983 77.777%,
+    #a2b983 80%,
+    #000 81.111%,
+    #000 84.444%,
+    #a2b983 85.555%,
+    #a2b983 88.888%,
+    #000 89.999%
+  );
+  --eye: #fef8d8;
+}
+
+.progress-wrapper {
+  justify-content: center;
+  display: flex;
+  align-content: center;
+  align-items: center;
+  margin-top: 4em;
+  margin-bottom: 1em;
+}
+
+.chart {
+  justify-content: flex-start;
+  background: var(--char);
+  box-shadow: inset 0px 5px 20px -2px #7e3c17;
+  position: relative;
+  padding: 0 5px;
+  margin-left: 2em;
+  display: flex;
+  height: 40px;
+  width: 500px;
+  border-radius: 100px;
+}
+
+.bar {
+  box-shadow: inset 0px 10px 3px -4px rgba(255, 255, 255, 0.2);
+  transition: all 1s ease;
+  border-radius: 100px;
+  background: var(--bar);
+  height: 40px;
+  position: relative;
+}
+
+.bar:after {
+  content: " ";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  right: 0;
+  border-radius: 50%;
+  background: var(--eye);
+  /* -webkit-animation: eye 5s normal forwards; */
+}
+.bar:before {
+  content: " ";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  right: 0;
+  border-radius: 50%;
+  background: #000;
+  top: 3px;
+  z-index: 2;
+  /* -webkit-animation: eyeball 5s normal forwards; */
+}
+
+.num {
+  position: absolute;
+  top: 90px;
+  font-size: 1.1em;
+  font-weight: 600;
+  padding: 7px 30px;
+  background: var(--background);
+  border-radius: 50px;
+  box-shadow: 0px 10px 20px -4px #7e3c17;
+  /* -webkit-animation: count 5s normal forwards; */
+}
+
+@media screen and (min-width: 700px) {
+  .num {
+    top: 140px;
+  }
+}
