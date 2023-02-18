@@ -22,7 +22,7 @@ export const Footer = () => {
   return (
     <PageFooter>
       <FooterP>
-        Emma &bull; Kristiina &bull; Lovisa &bull; Mimmi &bull; Suki
+        eyahyakhan- 2023
       </FooterP>
     </PageFooter>
   );

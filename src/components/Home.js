@@ -24,7 +24,7 @@ const Home = () => {
                 <p>Correct butt: +2 points </p>
                 <p>Incorrect butt: -1 point </p>
               </div>
-              <Button onClick={onStartButtonclick}> Start play! </Button>
+              <Button onClick={onStartButtonclick}> Play! </Button>
             </section>
           </main>
           <Footer />
